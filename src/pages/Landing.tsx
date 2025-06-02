@@ -1,138 +1,139 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "@/contexts/ThemeContext";
-import { Moon, Sun } from "lucide-react";
 
 const Landing = () => {
-  const { theme, toggleTheme } = useTheme();
-
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="container mx-auto flex justify-between items-center p-6">
-        <div className="flex items-center">
-          <h1 className="text-2xl font-medium">Alcranium</h1>
+    <div className="min-h-screen bg-gradient-to-b from-background to-[#181824] flex flex-col">
+      {/* Navbar */}
+      <nav className="container mx-auto flex justify-between items-center py-6 px-4 md:px-0">
+        <div className="flex items-center gap-3">
+          <img 
+            src="https://i.postimg.cc/ZnZMWhxb/image.png" 
+            alt="Alcranium Logo" 
+            className="h-8 w-8 rounded-lg"
+          />
+          <span className="text-xl font-bold tracking-tight">Alcranium</span>
         </div>
-        <div className="flex items-center gap-4">
-          <button 
-            className="p-2 rounded-full hover:bg-secondary"
-            onClick={toggleTheme}
-          >
-            {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
-          </button>
+        <div className="hidden md:flex gap-8 text-muted-foreground text-base font-medium">
+          <a href="#features" className="hover:text-primary transition">Features</a>
+          <a href="#pricing" className="hover:text-primary transition">Pricing</a>
+          <a href="#community" className="hover:text-primary transition">Community</a>
+          <a href="#docs" className="hover:text-primary transition">Docs</a>
+        </div>
+        <div className="flex gap-3">
           <Link to="/signin">
-            <Button variant="ghost">Sign In</Button>
+            <Button variant="ghost" className="px-5">Log in</Button>
           </Link>
           <Link to="/signup">
-            <Button>Get Started</Button>
+            <Button className="px-5">Download</Button>
           </Link>
         </div>
-      </header>
+      </nav>
+
+      {/* Notification Banner */}
+      <div className="flex justify-center mt-4">
+        <div className="bg-card/80 border border-border px-6 py-2 rounded-full shadow text-sm text-muted-foreground backdrop-blur-md">
+          🚀 The all-in-one productivity app for students. Organize, track, and excel with Alcranium!
+        </div>
+      </div>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-16">
-        <div className="md:w-1/2 space-y-6">
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-            Supercharge Your Learning & Productivity
-          </h1>
-          <p className="text-xl text-muted-foreground">
-            Manage tasks, track study sessions, and organize materials all in one place. The ultimate companion for better productivity and learning.
-          </p>
-          <div className="flex gap-4">
-            <Link to="/signup">
-              <Button size="lg" className="px-8">
-                Get Started
-              </Button>
-            </Link>
-            <Link to="/signin">
-              <Button size="lg" variant="outline">
-                Sign In
-              </Button>
-            </Link>
-          </div>
+      <section className="flex flex-col items-center justify-center flex-1 text-center px-4">
+        <h1 className="text-5xl md:text-7xl font-extrabold text-foreground mt-12 mb-4 drop-shadow-lg">
+          Collaborate with Intelligence
+        </h1>
+        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+          Trae IDE integrates seamlessly into your workflow, collaborating with you to maximize performance and efficiency.
+        </p>
+        <div className="flex flex-col gap-4 justify-center mb-6">
+          <Button className="px-12 py-4 text-lg font-bold shadow-lg text-white bg-primary hover:bg-primary/90 transition ">
+            Try Now
+          </Button>
         </div>
-        <div className="md:w-1/2">
+        {/* Product Screenshot/Mockup */}
+        <div className="w-full flex justify-center mt-4">
           <img 
-            src="/dashboard-preview.png" 
+            src="/dashboard.png" 
             alt="Dashboard Preview" 
-            className="rounded-lg shadow-xl border dark:border-gray-800"
-            onError={(e) => {
-              e.currentTarget.src = "https://placehold.co/600x400/4338CA/FFFFFF?text=Dashboard+Preview";
-            }}
+            className="rounded-2xl w-full max-w-8xl md:w-3/4 shadow-lg"
           />
         </div>
-      </section>
 
-      {/* Features Section */}
-      <section className="bg-muted py-24">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-16">
-            Everything You Need to Excel
-          </h2>
+        {/* Large Text Section */}
+        <div className="w-full mt-40 mb-40 px-8 md:px-24 text-left">
+          <div className="max-w-[98%]">
+            <h2 className="text-5xl md:text-7xl lg:text-7xl font-extrabold mb-14 text-left">
+              Alcranium enables natural learning to unlock possibilities for <span className="bg-gradient-to-r from-[#ff7070] to-[#e09cc1] bg-clip-text text-transparent">Student-AI collaboration</span><br />
+              just <span className="text-[#e09cc1]">@Study</span> <span className="text-primary">#Focus</span>, and Alcranium will enhance your learning journey.
+            </h2>
+          </div>
+        </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-card rounded-lg p-8 shadow-sm">
-              <div className="bg-primary/10 w-12 h-12 flex items-center justify-center rounded-full mb-6">
-                <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Task Management</h3>
-              <p className="text-muted-foreground">
-                Create, organize, and prioritize your tasks with ease. Set due dates, reminders, and track your progress.
-              </p>
+        {/* Feature Boxes */}
+        <div className="container mx-auto flex flex-col gap-32">
+          {/* Pomodoro Feature */}
+          <div className="flex flex-col md:flex-row items-center gap-16">
+            <div className="md:w-1/2 order-2 md:order-1">
+              <span className="text-primary font-semibold uppercase text-base mb-2 block tracking-wide">#Pomodoro</span>
+              <h2 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">Master Your Focus with Pomodoro</h2>
+              <p className="text-muted-foreground text-xl mb-4">Break your study sessions into focused sprints and enjoy guilt-free breaks. Alcranium's Pomodoro timer helps you beat procrastination, stay energized, and get more done—one session at a time.</p>
             </div>
-
-            <div className="bg-card rounded-lg p-8 shadow-sm">
-              <div className="bg-primary/10 w-12 h-12 flex items-center justify-center rounded-full mb-6">
-                <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Pomodoro Timer</h3>
-              <p className="text-muted-foreground">
-                Stay focused and avoid burnout with our built-in Pomodoro timer. Customize work and break intervals to match your style.
-              </p>
+            <div className="md:w-1/2 order-1 md:order-2 flex justify-center">
+              <img src="/pomodoro.png" alt="Pomodoro Feature" className="rounded-xl w-full max-w-2xl md:max-w-3xl shadow-lg" />
             </div>
+          </div>
 
-            <div className="bg-card rounded-lg p-8 shadow-sm">
-              <div className="bg-primary/10 w-12 h-12 flex items-center justify-center rounded-full mb-6">
-                <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Calendar Integration</h3>
-              <p className="text-muted-foreground">
-                View your schedule at a glance and plan your studies efficiently with our intuitive calendar.
-              </p>
+          {/* AI Feature */}
+          <div className="flex flex-col md:flex-row items-center gap-16">
+            <div className="md:w-1/2 flex justify-center">
+              <img src="/ai.png" alt="AI Feature" className="rounded-xl w-full max-w-2xl md:max-w-3xl shadow-lg" />
+            </div>
+            <div className="md:w-1/2">
+              <span className="text-primary font-semibold uppercase text-base mb-2 block tracking-wide">#AI Assistant</span>
+              <h2 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">Your Personal AI Study Buddy</h2>
+              <p className="text-muted-foreground text-xl mb-4">Get instant answers, smart study suggestions, and personalized insights. Alcranium's AI assistant helps you organize, learn, and achieve more—so you can reach your academic goals faster and smarter.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="container mx-auto px-6 py-24 text-center">
-        <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Learning Experience?</h2>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-          Join thousands of students who have already improved their productivity and learning outcomes with Alcranium.
-        </p>
-        <Link to="/signup">
-          <Button size="lg" className="px-8">Get Started for Free</Button>
-        </Link>
-      </section>
+      {/* Call-to-Action Section Above Footer */}
+      <div className="w-full flex flex-col items-center justify-center text-center py-20 bg-transparent">
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-foreground">Ready to get started with Alcranium?</h2>
+        <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl">Sign in to unlock your personalized dashboard, AI-powered study tools, and more. Join students already boosting their productivity with Alcranium!</p>
+        <a href="/signin">
+          <button className="px-10 py-4 text-lg font-bold shadow-lg text-white bg-primary hover:bg-primary/90 transition rounded-[5px] ">Log In</button>
+        </a>
+      </div>
 
       {/* Footer */}
-      <footer className="bg-muted py-12">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div>
-              <h2 className="text-xl font-medium">Alcranium</h2>
-              <p className="text-muted-foreground mt-2">© 2023 Alcranium. All rights reserved.</p>
+      <footer className="w-full pt-36 pb-28 px-0 md:px-0 bg-transparent">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12 md:gap-0 gap-y-8 px-8 md:px-16">
+          {/* Left: Logo, name, and copyright */}
+          <div className="flex flex-col items-start gap-3 min-w-[220px]">
+            <div className="flex items-center gap-3 mb-2">
+              <img src="https://i.postimg.cc/ZnZMWhxb/image.png" alt="Alcranium Logo" className="h-8 w-8" />
+              <span className="text-xl font-bold tracking-tight text-foreground">Alcranium</span>
             </div>
-            <div className="flex gap-8 mt-6 md:mt-0">
-              <a href="#" className="text-muted-foreground hover:text-foreground">Terms</a>
-              <a href="#" className="text-muted-foreground hover:text-foreground">Privacy</a>
-              <a href="#" className="text-muted-foreground hover:text-foreground">Help</a>
+            <span className="text-muted-foreground text-sm">Copyright © {new Date().getFullYear()}. All rights reserved.</span>
+          </div>
+          {/* Right: Links */}
+          <div className="flex flex-col md:flex-row gap-20 w-full md:w-auto justify-end md:justify-end">
+            <div className="flex flex-col gap-1 min-w-[120px]">
+              <span className="font-semibold mb-1">Terms</span>
+              <a href="#" className="text-muted-foreground hover:text-foreground text-sm">Terms of Service</a>
+              <a href="#" className="text-muted-foreground hover:text-foreground text-sm">Privacy Policy</a>
+              <a href="#" className="text-muted-foreground hover:text-foreground text-sm">Cookie Policy</a>
+            </div>
+            <div className="flex flex-col gap-1 min-w-[120px]">
+              <span className="font-semibold mb-1">Supports</span>
+              <a href="#" className="text-muted-foreground hover:text-foreground text-sm">Feedback</a>
+              <a href="#" className="text-muted-foreground hover:text-foreground text-sm">Docs</a>
+            </div>
+            <div className="flex flex-col gap-1 min-w-[120px]">
+              <span className="font-semibold mb-1">Engage</span>
+              <a href="#" className="text-muted-foreground hover:text-foreground text-sm">Discord ↗</a>
+              <a href="#" className="text-muted-foreground hover:text-foreground text-sm">Twitter X ↗</a>
             </div>
           </div>
         </div>
