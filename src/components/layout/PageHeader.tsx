@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Search, User, Settings } from "lucide-react";
+import { Bell, Search, User, Settings } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useChat } from "@/contexts/ChatContext";
 
@@ -54,6 +54,9 @@ const PageHeader = () => {
       </form>
       
       <div className="flex gap-2">
+        <button className="p-2 rounded-full bg-black text-white hover:bg-gray-800">
+          <Bell size={20} />
+        </button>
         <button 
           className="p-2 rounded-full bg-black text-white hover:bg-gray-800"
           onClick={() => navigate("/dashboard/profile")}
